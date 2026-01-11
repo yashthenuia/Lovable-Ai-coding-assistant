@@ -1,0 +1,204 @@
+/*
+  styles.css – Core styling for the Todo app
+  -------------------------------------------------
+  This stylesheet defines CSS variables for theming, sets up a clean
+  layout using flexbox, and provides responsive adjustments for mobile
+  devices. It also includes visual cues for completed todo items and
+  smooth transitions for interactive elements.
+*/
+
+/* -------------------------------------------------
+   CSS Variables – Theme & Typography
+   ------------------------------------------------- */
+:root {
+  /* Typography */
+  --font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --font-size-base: 16px;
+  --font-size-large: 1.25rem; /* ~20px */
+  --font-size-small: 0.875rem; /* ~14px */
+
+  /* Colors */
+  --color-bg: #f9fafb;            /* Light gray background */
+  --color-surface: #ffffff;       /* Card / surface color */
+  --color-primary: #2f80ed;       /* Main accent (buttons, links) */
+  --color-primary-dark: #1c5bbf;  /* Darker shade for hover */
+  --color-muted: #6b7280;         /* Muted text (e.g., completed items) */
+  --color-text: #111827;          /* Primary text */
+  --color-border: #e5e7eb;        /* Light border */
+}
+
+/* -------------------------------------------------
+   Global Reset & Base Styles
+   ------------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+}
+
+/* -------------------------------------------------
+   Header
+   ------------------------------------------------- */
+header {
+  width: 100%;
+  max-width: 800px;
+  padding: 1rem 1.5rem;
+  background-color: var(--color-surface);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  text-align: center;
+  font-size: var(--font-size-large);
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+/* -------------------------------------------------
+   Form – New Todo Input
+   ------------------------------------------------- */
+form {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+form input[type="text"] {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  transition: border-color 0.2s ease-in-out;
+}
+
+form input[type="text"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+}
+
+form button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  background-color: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease;
+}
+
+form button:hover {
+  background-color: var(--color-primary-dark);
+}
+
+form button:active {
+  transform: scale(0.98);
+}
+
+/* -------------------------------------------------
+   Todo List
+   ------------------------------------------------- */
+#todo-list {
+  width: 100%;
+  max-width: 800px;
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  transition: background-color 0.2s ease;
+}
+
+.todo-item:hover {
+  background-color: #f3f4f6; /* Slightly darker surface on hover */
+}
+
+.todo-item .text {
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+.todo-item button {
+  background: none;
+  border: none;
+  color: var(--color-muted);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.25rem;
+  transition: color 0.2s ease;
+}
+
+.todo-item button:hover {
+  color: var(--color-primary);
+}
+
+/* Completed state */
+.completed .text {
+  text-decoration: line-through;
+  color: var(--color-muted);
+  opacity: 0.7;
+}
+
+/* -------------------------------------------------
+   Responsive Adjustments
+   ------------------------------------------------- */
+@media (max-width: 600px) {
+  /* Stack input and button vertically */
+  form {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  form input[type="text"],
+  form button {
+    width: 100%;
+  }
+
+  form button {
+    margin-top: 0.5rem;
+  }
+
+  header {
+    font-size: var(--font-size-base);
+    padding: 0.75rem 1rem;
+  }
+
+  .todo-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todo-item .text {
+    margin-bottom: 0.5rem;
+  }
+}
