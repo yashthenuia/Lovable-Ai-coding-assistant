@@ -1,24 +1,78 @@
-🛠️ Coder Buddy
-Coder Buddy is an AI-powered coding assistant built with LangGraph.
-It works like a multi-agent development team that can take a natural language request and transform it into a complete, working project — file by file — using real developer workflows.
+# 🤖 Coder Buddy (AI Coding Assistant)
 
-🏗️ Architecture
-Planner Agent – Analyzes your request and generates a detailed project plan.
-Architect Agent – Breaks down the plan into specific engineering tasks with explicit context for each file.
-Coder Agent – Implements each task, writes directly into files, and uses available tools like a real developer.
-Coder Agent Architecture
-🚀 Getting Started
-Prerequisites
-Make sure you have uv installed, follow the instructions here to install it.
-Ensure that you have created a groq account and have your API key ready. Create an API key here.
-⚙️ Instsllstion and Startup
-Create a virtual environment using: uv venv and activate it using source .venv/bin/activate
-Install the dependencies using: uv pip install -r pyproject.toml
-Create a .env file and add the variables and their respective values mentioned in the .sample_env file
-Now that we are done with all the set-up & installation steps we can start the application using the following command:
+Coder Buddy is an AI-powered coding assistant that works like a virtual development team.  
+It converts natural language instructions into complete project structures and code files using a multi-agent workflow built with **LangGraph** and **Groq API**.
 
-  python main.py
-🧪 Example Prompts
-Create a to-do list application using html, css, and javascript.
-Create a simple calculator web application.
-Create a simple blog API in FastAPI with a SQLite database.
+---
+
+## 🚀 Project Overview
+
+Coder Buddy helps developers quickly scaffold small projects such as:
+- Todo applications
+- Simple web apps
+- Backend APIs
+- Basic full-stack project structures
+
+Instead of writing boilerplate manually, users can describe what they want in plain English, and Coder Buddy generates the project structure and source code automatically.
+
+---
+
+## 🧠 System Architecture
+
+The application follows a **multi-agent architecture**:
+
+- **Planner Agent**
+  - Understands user intent
+  - Breaks the request into logical steps
+
+- **Architect Agent**
+  - Designs project structure
+  - Decides file layout and responsibilities
+
+- **Coder Agent**
+  - Generates actual source code
+  - Writes files one by one using context from previous steps
+
+The agents are orchestrated using **LangGraph**, ensuring controlled and sequential execution.
+
+---
+
+## ✨ Features
+
+- Natural language → complete project generation
+- Multi-agent reasoning for structured code output
+- Supports Python backend and HTML/CSS frontend generation
+- Modular, extensible architecture
+- Ideal for rapid prototyping and learning
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python**
+- **LangGraph**
+- **Groq API (LLM inference)**
+- **HTML / CSS (for frontend scaffolding)**
+- **UV / Virtual Environment**
+
+---
+
+## 📂 Project Structure
+
+```text
+coder-buddy/
+│
+├── agents/
+│   ├── planner.py
+│   ├── architect.py
+│   └── coder.py
+│
+├── prompts/
+│   ├── planner_prompt.txt
+│   ├── architect_prompt.txt
+│   └── coder_prompt.txt
+│
+├── main.py
+├── requirements.txt
+├── .env.example
+└── README.md
